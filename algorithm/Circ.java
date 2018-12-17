@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 
 public class Circ {
-    private Graph G;
+    private Network G;
 
     public Circ() throws Exception {
         File file = new File("input.txt");
@@ -25,7 +25,7 @@ public class Circ {
             edge_info[i][3] = sc.nextInt();
         }
 
-        G = new Graph(n, m, vertex_demand, edge_info);
+        G = new Network(n, m, vertex_demand, edge_info);
         sc.close();
     }
 
