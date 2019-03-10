@@ -1,23 +1,26 @@
 public class Edge {
-    private int head;
-    private int tail;
     private int lower_bound;
     private int capacity;
     private int flow;
+    private char type;
 
-    public Edge(int head, int tail, int lower_bound, int capacity) {
-        this.head = head;
-        this.tail = tail;
+    public Edge(int lower_bound, int capacity) {
         this.lower_bound = lower_bound;
         this.capacity = capacity;
     }
 
-    public Edge(int head, int tail, int lower_bound, int capacity, int flow) {
-        this.head = head;
-        this.tail = tail;
+    public Edge(int lower_bound, int capacity, int flow) {
         this.lower_bound = lower_bound;
         this.capacity = capacity;
         this.flow = flow;
+    }
+
+    public void setType(char type) {
+        this.type = type;
+    }
+
+    public char getType() {
+        return this.type;
     }
 
     public void setFlow(int flow) {
@@ -26,22 +29,6 @@ public class Edge {
 
     public int getFlow() {
         return this.flow;
-    }
-
-    public void setHead(int head) {
-        this.head = head;
-    }
-
-    public int getHead() {
-        return this.head;
-    }
-
-    public void setTail(int tail) {
-        this.tail = tail;
-    }
-
-    public int getTail() {
-        return this.tail;
     }
     
     public void setLowerBound(int lower_bound) {

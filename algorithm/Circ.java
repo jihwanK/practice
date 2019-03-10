@@ -1,8 +1,10 @@
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.File;
 
 public class Circ {
-    private Network G;
+    private static Network G;
 
     public Circ() throws Exception {
         File file = new File("input.txt");
@@ -29,7 +31,20 @@ public class Circ {
         sc.close();
     }
 
+    public static void start() throws Exception {
+        int[] result = G.start();
+
+        File file = new File("output.txt");
+        BufferedWriter out = new BufferedWriter(new FileWriter(file));
+
+        for (int i = 0; i < result.length; i++) {
+            out.write(result[i]);
+            out.newLine();
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         Circ max = new Circ();
+        max.start();
     }
 }
