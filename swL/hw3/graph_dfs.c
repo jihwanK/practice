@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<limits.h>
+
 #define MAX_VERTEX 10
+
 int graph[MAX_VERTEX + 1][MAX_VERTEX + 1]; /* 정점간의 연결 상태 저장 인접 행렬 배열 */
 int vertexCnt, edgeCnt; /* 정점 개수와 간선 개수 저장 공간 */
 int check[MAX_VERTEX + 1]; /* 현재까지 방문한 정점 체크 배열 */
@@ -19,7 +21,7 @@ int main() {
 
 	FILE *fp; /* 그래프 정보 저장 파일의 파일포인터 */
 
-	fp = fopen("c:\\data\\park.txt", "rt");
+	fp = fopen("park.txt", "rt");
 	if (fp == NULL) {
 		printf("File open error!\n");
 		return 1;
@@ -70,6 +72,10 @@ bool initGraph(FILE *fp) {
 	}
 	return true; /* 성공적으로 그래프 데이터를 읽었으면 true 리턴 */
 }
+
+
+
+
 /*--------------------------------------------------------------------------------------
 Function name	: solve() - 이동 시 최단 거리를 계산하는 재귀함수(깊이 우선 탐색기법으로 검색)
 Parameters		: vertex - 현재까지 도착한 정점 번호
@@ -78,5 +84,21 @@ Returns		: 없음
 --------------------------------------------------------------------------------------*/
 void solve(int vertex, int sumDistance)
 {
-	// TODO
+	check[vertex] = 1;
+	printf("%d ", vertex);
+
+	if (vertex == goal) {
+		printf("%d \n", sumDistance);
+		minDistance = sumDistance;
+		printf("success \n"); 
+		return;
+	}
+
+	for (int i = 1;  i <= vertexCnt; i++) {
+		if ((check[i] != 1) && (graph[vertex][i] != 0)) {
+			sumDistance += graph[vertex][i];
+			solve(i, sumDistance);
+		}
+	}
+	
 }
