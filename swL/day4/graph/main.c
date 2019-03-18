@@ -8,6 +8,8 @@ int main(void) {
   init_graph();
   craete_graph();
   print_graph();
+
+  startDFS();
   
 
   return 0;
