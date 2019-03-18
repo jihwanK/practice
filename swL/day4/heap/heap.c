@@ -50,7 +50,7 @@ bool_t delete_heap(heap_t* hp, int* get_data) {
 
   *get_data = hp->heap[1];
   
-  if (hp->count != 0) {
+  if (hp->count != 1) {
     hp->heap[1] = hp->heap[hp->count];
     hp->count--;
     down_heap(hp, 1);
