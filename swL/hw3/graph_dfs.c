@@ -46,7 +46,7 @@ int main() {
 		if (minDistance == INT_MAX)
 			printf("최단거리 : -1(도착 불가능)\n");
 		else
-			printf("최단거리 : %d\n", minDistance);
+			printf("도착 가능\n");
 	}
 
 	getchar(); getchar();
@@ -85,12 +85,12 @@ Returns		: 없음
 void solve(int vertex, int sumDistance)
 {
 	check[vertex] = 1;
-	printf("%d ", vertex);
+	// printf("%d ", vertex);
 
 	if (vertex == goal) {
-		printf("%d \n", sumDistance);
+		// printf("%d \n", sumDistance);
 		minDistance = sumDistance;
-		printf("success \n"); 
+		// printf("success \n"); 
 		return;
 	}
 
