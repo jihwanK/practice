@@ -48,23 +48,24 @@ void bfs(int x, int y, int cnt)
 	enqueue(&queue, y);
 	d[x][y] = 1;
 
-	while (isQueueEmpty(&queue)) {
+	while (isQueueEmpty(&queue) == false) {
 		dequeue(&queue, &nx);
 		dequeue(&queue, &ny);
+		// d[nx][ny] = 1;
 
-		if (a[nx][ny] == 1) {
+	
+		for (int i = 0; i < 8; i++) {
 			int nnx, nny;
 
-			for (int i = 0; i < 8; i++) {
-				nnx = nx + dx[i];
-				nny = ny + dy[i];
+			nnx = nx + dx[i];
+			nny = ny + dy[i];
 
-				if (a[nnx][nny] == 1 && d[nnx][nny] == 0) {
-					enqueue(&queue, nnx);
-					enqueue(&queue, nny);
-					d[nnx][nny] = 1;
-				}
+			if (inRange(nnx, nny) && d[nnx][nny] == 0 && a[nx][ny] == 1) {
+				enqueue(&queue, nnx);
+				enqueue(&queue, nny);
+				d[nnx][nny] = 1;
 			}
+		
 		}
 	}
 
