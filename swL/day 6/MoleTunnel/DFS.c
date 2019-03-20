@@ -28,6 +28,14 @@ void createBit(void) {
 	 * TO DO
 	 */
 
+	scanf("%d", &bitSize);
+
+	for (int i = 1; i <= bitSize; i++) {
+		for (int j = 1; j <= bitSize; j++) {
+			scanf("%d", &bit[i][j]);
+		}
+	}
+
 }
 
 /* 맵 출력 함수 */
@@ -52,6 +60,17 @@ void dfs(int row, int col, int tNum) {
 	 * TO DO
 	 */
 
+	if (bit[row][col] == 0 || bit[row][col] != 1) {
+		return ;
+	} else if (bit[row][col] == 1) {
+		bit[row][col] = tNum;
+		bitInfo[tNum]++;
+	}
+
+	for (int i = 0; i < 4; i++) {
+		dfs(row + dr[i], col + dc[i], tNum);
+	}
+	
 }
 
 /* 굴 탐색 정보를 출력하는 함수로써 굴 번호의 굴의 크기를 출력한다. */
@@ -72,5 +91,14 @@ void startDFS(void) {
 	/*
 	 * TO DO
 	 */
+	tunnelNumber = 2;
+
+	for (int i = 1; i <= bitSize; i++) {
+		for (int j = 1; j <= bitSize; j++) {
+			if (bit[i][j] == 1) {
+				dfs(i, j, tunnelNumber++);
+			}
+		}
+	}
 
 }

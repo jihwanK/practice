@@ -13,7 +13,13 @@ void initGraph(void) {
 	 * 인접하지 않은 정점은 INF
 	 * 출발점과 도착점이 동일한 경우 0으로 초기화 한다.
 	 */
+	scanf("%d %d", &vertex, &edge);
 
+	for (int i = 0; i < edge; i++) {
+		int v1, v2, weight;
+		scanf("%d %d %d", &v1, &v2, &weight);
+		d[v1][v2] = weight;
+	}
 }
 
 void createGraph(void) {
@@ -21,6 +27,18 @@ void createGraph(void) {
 	/*
 	 * TO DO
 	 */
+	
+	for (int i = 1; i <= vertex; i++) {
+		for (int j = 1; j <= vertex; j++) {
+			p[i][j] = NIL;
+			if ((d[i][j] == 0) && (i != j)) {
+				d[i][j] = INF;
+			} else if (i == j) {
+				d[i][j] = 0;
+				p[i][j] = 0;
+			}
+		}
+	}
 
 }
 
