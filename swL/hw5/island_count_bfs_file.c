@@ -44,10 +44,28 @@ void bfs(int x, int y, int cnt)
 	int nx, ny;
 	createQueue(&queue, w*h*2);
 
-	// TODO
+	enqueue(&queue, x);
+	enqueue(&queue, y);
+	d[x][y] = 1;
 
-	for (int i = 0; i < 8; i++) {
-		bfs(x + dx[i], y + dy[i], cnt);
+	while (isQueueEmpty(&queue)) {
+		dequeue(&queue, &nx);
+		dequeue(&queue, &ny);
+
+		if (a[nx][ny] == 1) {
+			int nnx, nny;
+
+			for (int i = 0; i < 8; i++) {
+				nnx = nx + dx[i];
+				nny = ny + dy[i];
+
+				if (a[nnx][nny] == 1 && d[nnx][nny] == 0) {
+					enqueue(&queue, nnx);
+					enqueue(&queue, nny);
+					d[nnx][nny] = 1;
+				}
+			}
+		}
 	}
 
 	destroyQueue(&queue);
