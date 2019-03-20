@@ -16,7 +16,7 @@ int main()
 	int cnt;
 	FILE * fp;
 	int i,j;
-	fp = fopen("d:\\data\\land.txt", "rt");
+	fp = fopen("land.txt", "rt");
 	assert(fp != NULL);
 
 	while (1) {
@@ -45,6 +45,10 @@ void bfs(int x, int y, int cnt)
 	createQueue(&queue, w*h*2);
 
 	// TODO
+
+	for (int i = 0; i < 8; i++) {
+		bfs(x + dx[i], y + dy[i], cnt);
+	}
 
 	destroyQueue(&queue);
 }
