@@ -7,10 +7,12 @@ int main(void) {
 	initMap();
 	createMap();
 	printMap();
-	printf("최대 값 : %d\n", calc());
+	printf("[최대 값 : %d]\n", calc());
 	printMap();
-	//printDir();
-	//printPath();
+	printf("[각 위치에서의 dir 값] \n");
+	printDir();
+	printf("[전체 path 출력] \n");
+	printPath();
 
 	return 0;
 }
