@@ -31,6 +31,29 @@ void createMap(void) {
 	 * TO DO
 	 */
 
+	int input = 0;
+	
+	scanf("%d %d", &N, &M);
+
+	for (int i = 1; i <= N; i++) {
+		for (int j = 1; j <= M; j++) {
+			scanf(" %c", &input);
+
+			if (input == '#') {
+				map[i][j] = -2;
+			} else if (input == '.') {
+				map[i][j] = -1;
+			} else if (input == 'S') {
+				start.row = i;
+				start.col = j;
+			} else if (input == 'G') {
+				map[i][j] = -1;
+				goal.row = i;
+				goal.col = j;
+			}
+		}
+	}
+
 }
 
 void printMap(void) {
@@ -42,21 +65,21 @@ void printMap(void) {
 		for (j=1 ; j<=M ; j++) {
 
 			if ((i == start.row) && (j == start.col)) {		/* 출발점인 경우 */
-				printf("%c", 'S');
+				printf("%4c", 'S');
 			}
 			else if (map[i][j] == -1) {						/* 도로인 경우 */
 				if ((i == goal.row) && (j == goal.col)) {	/* 도착점인 경우 */
-					printf("%c", 'G');
+					printf("%4c", 'G');
 				}
 				else {
-					printf("%c", '.');
+					printf("%4c", '.');
 				}
 			}
 			else if (map[i][j] == -2) {						/* 벽인 경우 */
-				printf("%c", '#');
+				printf("%4c", '#');
 			}
 			else {											/* 그 이외의 경우 */
-				printf("%c", map[i][j] + '0');
+				printf("%4d", map[i][j]);
 			}
 		}
 		printf("\n");
@@ -68,6 +91,33 @@ int BFS(coord_t s, coord_t g) {
 	/*
 	 * TO DO
 	 */
+		coord_t tmp;
 
-	return 0;
+		queue[rear] = s;
+		rear = (rear + 1) % MAX;;
+
+		while (front != rear) {
+			tmp = queue[front];
+			front = (front + 1) % MAX;
+
+			if (tmp.row == goal.row && tmp.col == goal.col) {
+				break;
+			}
+
+			for (int i = 0; i < 4; i++) {
+				coord_t new_pos;
+
+				new_pos.row = tmp.row + dr[i];
+				new_pos.col = tmp.col + dc[i];
+
+				if (map[new_pos.row][new_pos.col] == -1) {
+					queue[rear] = new_pos;
+					rear = (rear + 1) % MAX;
+					map[new_pos.row][new_pos.col] = map[tmp.row][tmp.col] + 1;
+					
+				}
+			}
+		}
+
+	return map[goal.row][goal.col];
 }

@@ -3,6 +3,8 @@
 
 int main(void) {
 	int dist;
+	int testcase;
+
 	freopen("data.txt", "r", stdin);
 
 	initMap();
@@ -17,5 +19,6 @@ int main(void) {
 	}
 	printMap();
 
+	
 	return 0;
 }
