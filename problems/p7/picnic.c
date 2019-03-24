@@ -21,12 +21,12 @@ void init_problem(void) {
   for (int i = 0; i < num_pairs; i++) {
     int st1, st2;
     scanf("%d %d", &st1, &st2);
-    printf("(%d %d) ", st1, st2);
+    // printf("(%d %d) ", st1, st2);
 
     pairs[st1][st2] = 1;
     pairs[st2][st1] = 1;
   }
-  printf("\n");
+  // printf("\n");
 }
 
 int solve() {
@@ -42,7 +42,7 @@ int solve() {
   }
 
   if (i == num_students) {
-    printf("\n");
+    // printf("\n");
     return 1;
   }
 
@@ -50,7 +50,7 @@ int solve() {
     if (pairs[to_be_paired][i] == 1 && taken[i] == 0) {
       taken[to_be_paired] = 1;
       taken[i] = 1;
-      printf("(%d, %d) ", to_be_paired, i);
+      // printf("(%d, %d) ", to_be_paired, i);
       cnt += solve();
       taken[i] = 0;
       taken[to_be_paired] = 0;
@@ -77,10 +77,10 @@ int main(void) {
   for (int i = 0; i < test_case; i++) {
     init_problem();
 
-    print_pairs();
+    // print_pairs();
     printf("%d \n", solve());
 
-    printf("================================\n");
+    // printf("================================\n");
   }
 
   
