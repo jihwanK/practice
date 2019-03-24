@@ -11,4 +11,4 @@ for w in chem:
 #         num_of_compund += 1
 
 print(compound)
-print (digits)
+print(digits)
