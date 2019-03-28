@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cnt=0
-names=()
-phone_numbers=()
+#names=()
+#phone_numbers=()
 
 function register {
 	read -p "이름: " name
@@ -19,10 +19,12 @@ function register {
 		fi
 	done
 	
-	names[$cnt]=$name
+#names[$cnt]=$name
 
 	read -p "전화번호: " number
-	phone_numbers[$cnt]=$number
+#phone_numbers[$cnt]=$number
+
+	echo $name $number >> phonebook
 
 	((cnt+=1))
 
