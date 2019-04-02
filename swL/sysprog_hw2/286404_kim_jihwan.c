@@ -16,7 +16,7 @@
 
 
 void handle_options(int argc, char** argv, int* flag);
-void print_time();
+void print_time(struct stat*);
 void file_type(char* perm, struct stat buf);
 void file_perm(char* perm, struct stat buf);
 
@@ -25,6 +25,7 @@ void print_ls(int, char**);
 void print_list(char*);
 void print_all();
 void print_recur(char*);
+void print_recur_list(char*);
 void print_inode();
 
 
@@ -34,30 +35,83 @@ int main(int argc, char** argv) {
 
 	handle_options(argc, argv, &flag);
 
-	if (flag & ALL) {
+	DIR* dp;
+	struct dirent *p;
+	struct stat buf;
+	struct passwd* pwd;
+	struct group* grp; 
 	
+	char perm[11] = "----------";
+
+	
+
+
+
+
+
+	dp = opendir(".");
+
+	while(p = readdir(dp)) {
+		if (flag & ALL) {
+	
+		} else if ((strcmp(p->d_name, ".") == 0) || (strcmp(p->d_name, "..") == 0)) {
+			continue;
+		}
+
+		if (flag & INODE) {
+			printf("%ld ", (long) buf.st_ino);
+		}
+
+		if (flag & RECUR) {
+			if (flag & LIST) {
+				print_recur_list(".");
+				break;
+			} else {
+				print_recur(".");
+				break;
+			}
+		} else if (flag & LIST)  {
+			stat(p->d_name, &buf);
+
+			file_perm(perm, buf);
+			file_type(perm, buf);
+
+			printf("%s ", perm);
+			printf("%ld ", buf.st_nlink);
+
+			pwd = getpwuid(buf.st_uid);
+			printf("%s ", pwd->pw_name);
+
+			grp = getgrgid(buf.st_gid);
+			printf("%s ", grp->gr_name);
+
+			printf("%ld ", buf.st_size);
+
+			print_time(&buf);
+
+			printf("%s \n", p->d_name);
+		} else {
+			printf("%s\t", p->d_name);
+		}
+
+		
+		//printf("%s ", p->d_name);
+
+		// print_list(p->d_name);
 	}
-
-	if (flag & LIST)  {
-
-	}
-
-	if (flag & INODE) {
-
-	}
-
-	if (flag & RECUR) {
-
-	}
+	printf("\n");
 
 
-	print_ls(argc, argv);
+	
+
+
+	// print_ls(argc, argv);
 
 	//print_list(argc, argv);
 
 	printf("\n");
 
-	print_recur(".");
+	// print_recur(".");
 	return 0;
 }
 
@@ -89,7 +143,7 @@ void print_list(char* fname) {
 	file_type(perm, buf);
 
 	printf("%s ", perm);
-	printf("%d ", buf.st_nlink);
+	printf("%ld ", buf.st_nlink);
 
 	pwd = getpwuid(buf.st_uid);
 	printf("%s ", pwd->pw_name);
@@ -97,9 +151,9 @@ void print_list(char* fname) {
 	grp = getgrgid(buf.st_gid);
 	printf("%s ", grp->gr_name);
 
-	printf("%d ", buf.st_size);
+	printf("%ld ", buf.st_size);
 
-	print_time();
+	print_time(&buf);
 
 	printf("%s \n", fname);
 }
@@ -113,11 +167,40 @@ void print_recur(char* dname) {
 	struct dirent *p;
 	struct stat buf;
 
+	if (strcmp(dname, "..") == 0) {
+		printf("===================================================\n");
+		return;
+	}
+		
 	chdir(dname);
 	dp = opendir(".");
-	printf("%s : ", dname);
+	printf("%s: \n", dname);
 	while(p = readdir(dp))
 		printf("%s ", p->d_name);
+	printf("\n\n");
+
+	rewinddir(dp);
+	while(p = readdir(dp)) {
+		lstat(p->d_name, &buf);
+		if (S_ISDIR(buf.st_mode))
+			if (strcmp(p->d_name, ".") && strcmp(p->d_name, "..")) {
+				print_recur(p->d_name);
+			}
+	}
+	closedir(dp);
+	// chdir("..");
+}
+
+void print_recur_list(char* dname) {
+	DIR* dp;
+	struct dirent *p;
+	struct stat buf;
+
+	chdir(dname);
+	dp = opendir(".");
+	printf("%s: \n", dname);
+	while(p = readdir(dp))
+		print_list(p->d_name);
 	printf("\n\n");
 
 	rewinddir(dp);
@@ -139,15 +222,13 @@ void print_inode() {
 
 
 
-void print_time() {
-	time_t now;
+void print_time(struct stat* s) {
 	char *str;
 	struct tm* l_time;
 	char mon[][4] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-	now = time(0);
-	l_time = localtime(&now);
-	printf("%s %d %d:%d ", mon[l_time->tm_mon], l_time->tm_mday, l_time->tm_hour, l_time->tm_min);
+	l_time = localtime(&s->st_mtime);
+	printf("%s  %d %02d:%02d ", mon[l_time->tm_mon], l_time->tm_mday, l_time->tm_hour, l_time->tm_min);
 }
 
 
