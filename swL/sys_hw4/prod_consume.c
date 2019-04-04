@@ -44,12 +44,34 @@ int is_full( )
 {
 	return queue.nitem ==  Q_MAX;
 }
+
+//===================================================================//
+//===================================================================//
+//===================================================================//
+//===================================================================//
+
 void * produce(void *vptr)
 {
 	int		i;
+	int		produce_time;
+
 	for (i = 0; i < NLOOP; i++) 
 	{
-    
+  	pthread_mutex_lock(&queue.mutex);
+		if (is_full()) {
+			printf("PRODUCER THREAD is waiting for the items to be CONSUMED \n");
+			pthread_cond_wait(&queue.c_cond, &queue.mutex);
+		}
+		
+		produce_time = (rand() % 5) + 1;
+		printf("PRODUCED TIME is %dms \n", produce_time);
+
+		usleep(produce_time);
+		put(i + 1);
+		printf("produce %d \n", i+1);
+	
+		pthread_cond_signal(&queue.p_cond);
+		pthread_mutex_unlock(&queue.mutex);
 	}
 	return 0;
 }
@@ -57,11 +79,33 @@ void * produce(void *vptr)
 void * consume(void *vptr)
 {
 	int		i, val;
+	int 	consume_time;
+
 	for (i = 0; i < NLOOP; i++) {
+		pthread_mutex_lock(&queue.mutex);
+		if (is_empty()) {
+			printf("CONSUMER THREAD is waiting for the items to be PRODUCED \n");
+			pthread_cond_wait(&queue.p_cond, &queue.mutex);
+		}
+
+		consume_time = (rand() % 2) + 2;
+		printf("CONSUMED TIME is %dms \n", consume_time);
+
+		usleep(consume_time);
+		val = get();
+		printf("consume %d \n", val);
 		
+		pthread_cond_signal(&queue.c_cond);
+		pthread_mutex_unlock(&queue.mutex);
+
 	}
 	return 0;
 }
+
+//===================================================================//
+//===================================================================//
+//===================================================================//
+//===================================================================//
 
 int main(int argc, char **argv)
 {
@@ -75,5 +119,3 @@ int main(int argc, char **argv)
 	pthread_join(tidB, 0);
 	return 0;
 }
-
-
