@@ -17,9 +17,10 @@ int main()
 	memset( &addr, 0, sizeof(addr));
 	addr.sin_family = AF_INET;
 	addr.sin_port   = htons(7777);
-	addr.sin_addr.s_addr   = inet_addr("192.168.137.100");
+	//addr.sin_addr.s_addr   = inet_addr("192.168.137.100");
+	addr.sin_addr.s_addr   = inet_addr("127.0.0.1");
 	Connect(sd, (struct sockaddr*)&addr, sizeof(addr));
-	while( ret = read(0, buff, sizeof buff ) )
+	while(ret = read(0, buff, sizeof buff))
 	{
 		Write( sd, buff, ret);
 		ret = Read( sd, buff, sizeof buff );
