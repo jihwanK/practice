@@ -1,4 +1,4 @@
-package Client;
+//package Client;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -14,60 +15,43 @@ import java.net.Socket;
  *
  */
 public class Client {
-
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		Client cm = new Client();
-		cm.ClientRun("Check the connection");
+		cm.ClientRun("NEW CONNECTION");
 	}
 
 	/**
 	 * @param data
 	 */
-	public void ClientRun(String data){
+	private void ClientRun(String data) throws IOException {
 
 		Socket socket = null;
-		OutputStream os = null;
-		OutputStreamWriter osw =null;
-		BufferedWriter bw = null;
+		BufferedReader in = null;        
+		PrintWriter out = null;          
 
-		InputStream is =null;
-		InputStreamReader isr = null;
-		BufferedReader br = null;
+		try {
+			socket = new Socket("127.0.0.1", 4200);   // loopback ip (127.0.0.1), which means myself
+		} catch(IOException ioe) {
+			ioe.printStackTrace();
+		}
 
-		try{
-//			socket = new Socket("192.168.0.3", 4200);  //노트북 IP 192.168.0.3
-			socket = new Socket("127.0.0.1", 4200);  //노트북 IP 192.168.0.3
-			os = socket.getOutputStream();
-			osw = new OutputStreamWriter(os);
-			bw = new BufferedWriter(osw);            //서버로 전송을 위한 OutputStream
+		try {
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
 
-			bw.write(data);
-			bw.newLine();
-			bw.flush();
-			
-			is = socket.getInputStream();
-			isr = new InputStreamReader(is);
-			br = new BufferedReader(isr);        // 서버로부터 Data를 받음
+			out.println(data);                 
+			out.flush();
 
-			String receiveData = null;
-			receiveData = br.readLine();        // 서버로부터 데이터 한줄 읽음
-			System.out.println("서버로부터 받은 데이터 : " + receiveData);
-		}catch(Exception e){
+			String receiveData = in.readLine();        
+			System.out.println("received data from the server : " + receiveData);
+
+		} catch(Exception e) {
 			e.printStackTrace();
-		}finally {
-			try{
-				bw.close();
-				osw.close();
-				os.close();
-				br.close();
-				isr.close();
-				is.close();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+		} finally {
+			in.close();
+			out.close();
+			socket.close();
 		}    
-
 	}
-
 }
