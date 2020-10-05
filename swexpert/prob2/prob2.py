@@ -40,4 +40,4 @@ for T in range(1, len(lines)):
   st, count = lines[T].split()
   count = int(count)
   ans = recur(list(st), count, st)
-  print('#{} {}'.format(T + 1, ans))
+  print('#{} {}'.format(T, ans))
