@@ -3,7 +3,7 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 
 # Please write your code here.
 max_safe_area = 0
-min_k = 1e10
+min_k = 0
 drs = [-1, 1, 0, 0]
 dcs = [0, 0, -1, 1]
 
