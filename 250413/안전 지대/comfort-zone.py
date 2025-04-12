@@ -1,6 +1,7 @@
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
-
+import sys
+sys.setrecursionlimit(2500)
 # Please write your code here.
 max_safe_area = 0
 min_k = 1
