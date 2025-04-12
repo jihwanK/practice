@@ -11,7 +11,7 @@ dcs = [0, 0, -1, 1]
 
 def move(possibles):
     max_val = max(possibles.keys())
-    print(sorted(possibles[max_val], key=lambda x: (x[0], x[1]))[0])
+    # print(sorted(possibles[max_val], key=lambda x: (x[0], x[1])))
     return sorted(possibles[max_val], key=lambda x: (x[0], x[1]))[0]
 
 def can_go(r, c):
@@ -26,8 +26,10 @@ def bfs():
         for dr, dc in zip(drs, dcs):
             new_r, new_c = r+dr, c+dc
 
-            if can_go(new_r, new_c) and grid[r][c] > grid[new_r][new_c]:
+            if can_go(new_r, new_c) and grid[cur[0]][cur[1]] > grid[new_r][new_c]:
                 possibles[grid[new_r][new_c]].append((new_r, new_c))
+                q.append((new_r, new_c))
+                visited[new_r][new_c] = True
     return possibles
 
 q = deque([])
@@ -36,11 +38,13 @@ cur = (start_r-1, start_c-1)
 visited[start_r-1][start_c-1] = True
 for _ in range(k):
     possibles = bfs()
-    print(possibles)
+    # print(possibles)
     if len(possibles) == 0:
         break
     next_r, next_c = move(possibles)
+    visited = [[False]*n for _ in range(n)]
     visited[next_r][next_c] = True
     q.append((next_r, next_c))
+    cur = (next_r, next_c)
 
-print(cur[0], cur[1])
+print(cur[0]+1, cur[1]+1)
