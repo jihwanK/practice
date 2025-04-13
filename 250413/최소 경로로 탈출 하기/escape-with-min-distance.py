@@ -32,7 +32,7 @@ visited[0][0] = True
 steps[0][0] = 0
 bfs()
 print(steps[n-1][m-1])
-print(steps)
+# print(steps)
 
 
 
