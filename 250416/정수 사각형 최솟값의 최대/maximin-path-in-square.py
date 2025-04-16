@@ -7,8 +7,8 @@ max_min = [[0]*n for _ in range(n)]
 
 max_min[0][0] = grid[0][0]
 for i in range(1, n):
-    max_min[0][i] = min(grid[0][i], grid[0][i-1])
-    max_min[i][0] = min(grid[i][0], grid[i-1][0])
+    max_min[0][i] = min(grid[0][i], max_min[0][i-1])
+    max_min[i][0] = min(grid[i][0], max_min[i-1][0])
 
 for r in range(1, n):
     for c in range(1, n):
@@ -17,6 +17,8 @@ for r in range(1, n):
         else:
             max_min[r][c] = max(max_min[r][c-1], max_min[r-1][c])
 
+# for row in max_min:
+#     print(*row)
 print(max_min[n-1][n-1])
 
 
