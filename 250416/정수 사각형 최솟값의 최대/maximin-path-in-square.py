@@ -18,11 +18,11 @@ def dfs(r, c, trace):
     
     if in_range(r+1, c):
         stack.append((r+1, c))
-        dfs(r+1, c, trace+[grid[r][c]])
+        dfs(r+1, c, trace+[grid[r+1][c]])
         stack.pop()
     if in_range(r, c+1):
         stack.append((r, c+1))
-        dfs(r, c+1, trace+[grid[r][c]])
+        dfs(r, c+1, trace+[grid[r][c+1]])
         stack.pop()
 
 dfs(0, 0, [grid[0][0]])
