@@ -12,10 +12,11 @@ for i in range(1, n):
 
 for r in range(1, n):
     for c in range(1, n):
-        if min(grid[r][c], max_min[r][c-1], max_min[r-1][c]) == grid[r][c]:
-            max_min[r][c] = grid[r][c]
-        else:
-            max_min[r][c] = max(max_min[r][c-1], max_min[r-1][c])
+        # if min(grid[r][c], max_min[r][c-1], max_min[r-1][c]) == grid[r][c]:
+        #     max_min[r][c] = grid[r][c]
+        # else:
+        #     max_min[r][c] = max(max_min[r][c-1], max_min[r-1][c])
+        max_min[r][c] = min(grid[r][c], max(max_min[r][c-1], max_min[r-1][c]))
 
 # for row in max_min:
 #     print(*row)
