@@ -9,6 +9,7 @@ for i in range(n):
     for j in range(i+1, n):
         if m[i] <= m[j]:
             dp[j] = dp[i]
+            break
         else:
             dp[j] = dp[i] + 1
 
