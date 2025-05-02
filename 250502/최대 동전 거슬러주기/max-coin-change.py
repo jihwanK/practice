@@ -4,7 +4,9 @@ coins = list(map(int, input().split()))
 # Please write your code here.
 dp = [-1]*(M+1)
 
-dp[0] = 0
+for coin in coins:
+    dp[coin] = 1
+
 for i in range(1, M+1):
     for coin in coins:
         if i - coin >= 0:
