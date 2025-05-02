@@ -1,5 +1,5 @@
 n, m = map(int, input().split())
-A = list(map(int, input().split()))
+A = [0] + list(map(int, input().split()))
 
 # Please write your code here.
 dp = [[False]*(m+1) for _ in range(n+1)]
@@ -14,7 +14,7 @@ for i in range(n):
             dp[i][j] = True
 
 
-if dp[n-1][m]:
+if dp[n][m]:
     print("Yes")
 else:
     print("No")
