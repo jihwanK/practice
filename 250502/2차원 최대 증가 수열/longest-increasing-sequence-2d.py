@@ -7,11 +7,11 @@ dp = [[-1]*m for _ in range(n)]
 dp[0][0] = 1
 
 for r in range(n):
-    for c in range(n):
+    for c in range(m):
         for nr in range(r):
             for nc in range(c):
-                if dp[nr][nc] == -1:
-                    continue
+                # if dp[nr][nc] == -1:
+                #     continue
                 if grid[r][c] > grid[nr][nc]:
                     dp[r][c] = max(dp[r][c], dp[nr][nc]+1)
 
