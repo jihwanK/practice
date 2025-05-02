@@ -12,4 +12,4 @@ for i in range(n+1):
             if (i-numbers[j]) >= 0:
                 dp[i] = dp[i] + dp[i-numbers[j]]
 
-print(dp[n])
+print(dp[n]%10007)
