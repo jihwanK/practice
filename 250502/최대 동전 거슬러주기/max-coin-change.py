@@ -8,7 +8,8 @@ if min(coins) > M:
     print(-1)
 else:    
     for coin in coins:
-        dp[coin] = 1
+        if coin <= M:
+            dp[coin] = 1
 
     for i in range(1, M+1):
         for coin in coins:
