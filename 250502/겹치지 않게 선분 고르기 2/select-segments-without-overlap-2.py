@@ -1,29 +1,18 @@
 n = int(input())
-# x1, x2 = [], []
 lines = []
 for _ in range(n):
     a, b = map(int, input().split())
     lines.append((a, b))
-    # x1.append(a)
-    # x2.append(b)
 
-# Please write your code here.
-def is_overlap(l1, l2):
-    return l1[1] >= l2[0]
+# 선분을 끝점 기준으로 정렬 (이렇게 하면 DP 계산이 더 간단해집니다)
+lines.sort(key=lambda x: x[1])
 
-lines.sort(key=lambda x: (x[0], x[1]))
+dp = [1] * n  # 각 선분을 최소 1개는 선택할 수 있음
 
-dp = [0]*n
-
-dp[0] = 1
-for i, (start_i, end_i) in enumerate(lines[1:], start=1):
-    l1 = (start_i, end_i)
-    for j, (start_j, end_j) in enumerate(lines[:i]):
-        l2 = (start_j, end_j)
-
-        if is_overlap(l2, l1):
-            dp[i] = max(dp[j], dp[i])
-        else:
-            dp[i] = max(dp[j]+1, dp[i])
+for i in range(1, n):
+    for j in range(i):
+        # j번째 선분의 끝점이 i번째 선분의 시작점보다 작거나 같으면 겹치지 않음
+        if lines[j][1] <= lines[i][0]:
+            dp[i] = max(dp[i], dp[j] + 1)
 
 print(max(dp))
