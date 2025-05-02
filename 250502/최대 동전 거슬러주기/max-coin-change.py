@@ -14,6 +14,9 @@ else:
     for i in range(1, M+1):
         for coin in coins:
             if i - coin >= 0:
+                if dp[i-coin] == -1:
+                    continue 
+                    
                 dp[i] = max(dp[i-coin]+1, dp[i])
 
     print(dp[M])
