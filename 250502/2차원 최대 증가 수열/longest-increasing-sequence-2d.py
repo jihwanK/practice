@@ -6,8 +6,8 @@ dp = [[-1]*m for _ in range(n)]
 
 dp[0][0] = 1
 
-for r in range(1, n):
-    for c in range(1, n):
+for r in range(n):
+    for c in range(n):
         for nr in range(r):
             for nc in range(c):
                 if dp[nr][nc] == -1:
