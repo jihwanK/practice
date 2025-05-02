@@ -10,8 +10,8 @@ for i in range(1, n+1):
         if j-A[i] >= 0 and dp[i-1][j-A[i]] == True:
             dp[i][j] = True
         
-        # if dp[i-1][j]:
-        #     dp[i][j] = True
+        if dp[i-1][j]:
+            dp[i][j] = True
 
 
 if dp[n][m]:
