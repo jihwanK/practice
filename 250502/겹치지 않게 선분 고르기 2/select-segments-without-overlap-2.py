@@ -9,12 +9,21 @@ for _ in range(n):
 
 # Please write your code here.
 def is_overlap(l1, l2):
-    return l1[1] <= l2[0]
+    return l1[1] >= l2[0]
 
-lines.sort(key=lambda x: (x[0], x[1]-x[0]))
+lines.sort(key=lambda x: (x[0], x[1]))
 
 dp = [0]*n
 
 dp[0] = 1
-for idx, (start, end) in enumerate(lines, start=1):
-    print(idx, start, end)
+for i, (start_i, end_i) in enumerate(lines[1:], start=1):
+    l1 = (start_i, end_i)
+    for j, (start_j, end_j) in enumerate(lines[:i]):
+        l2 = (start_j, end_j)
+
+        if is_overlap(l2, l1):
+            dp[i] = max(dp[j], dp[i])
+        else:
+            dp[i] = max(dp[j]+1, dp[i])
+
+print(max(dp))
