@@ -15,20 +15,11 @@ for i in range(n):
     if dir[i] == "R":
         for delta in range(x[i]):
             trace[cur+delta] += 1
-            # print(cur, trace[990:1010])
         cur += x[i]
     elif dir[i] == "L":
         for delta in range(1, x[i]+1):
             trace[cur-delta] += 1
-            # print(cur, trace[990:1010])
         cur -= x[i]
 
-answer = 0
-for i in range(2000):
-    if trace[i] >= 2 and trace[i+1] >= 2:
-        answer += 1
-
 print(len(list(filter(lambda x: x>=2, trace))))
-# print(trace[980:1020])
-# print(answer)
 
