@@ -13,14 +13,19 @@ offset = 1000
 cur = offset
 for i in range(n):
     if dir[i] == "R":
-        for delta in range(x[i]):
+        for delta in range(x[i]+1):
             trace[cur+delta] += 1
         cur += x[i] 
     elif dir[i] == "L":
-        for delta in range(x[i]):
+        for delta in range(x[i]+1):
             trace[cur-delta] += 1
         cur -= x[i]
 
-# print(trace[950:1050])
-print(len(list(filter(lambda x: x>=2, trace))))
+answer = 0
+for i in range(2000):
+    if trace[i] >= 2 and trace[i+1] >= 2:
+        answer += 1
+
+# print(len(list(filter(lambda x: x>=2, trace))))
+print(answer)
 
