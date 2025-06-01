@@ -13,5 +13,5 @@ for i in range(200):
         if max_overlapped < axis[i]:
             max_overlapped = axis[i]
 
-print(axis)
+# print(axis)
 print(max_overlapped)
