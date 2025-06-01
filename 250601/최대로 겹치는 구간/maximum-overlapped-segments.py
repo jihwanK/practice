@@ -7,13 +7,4 @@ for segment_a, segment_b in segments:
     for i in range(segment_a+100, segment_b+100):
         axis[i] += 1
 
-# max_overlapped = 0
-# for i in range(200):
-#     if axis[i] == axis[i+1]:
-#         if max_overlapped < axis[i]:
-#             max_overlapped = axis[i]
-            # print(i, max_overlapped)
-
-# print(axis)
-# print(max_overlapped)
 print(max(axis))
