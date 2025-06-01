@@ -15,10 +15,12 @@ for i in range(n):
     if dir[i] == "R":
         for delta in range(x[i]):
             trace[cur+delta] += 1
+            # print(cur, trace[990:1010])
         cur += x[i]
     elif dir[i] == "L":
-        for delta in range(x[i]):
+        for delta in range(1, x[i]+1):
             trace[cur-delta] += 1
+            # print(cur, trace[990:1010])
         cur -= x[i]
 
 answer = 0
