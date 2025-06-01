@@ -1,3 +1,5 @@
+from collections import Counter
+
 n = int(input())
 commands = [tuple(input().split()) for _ in range(n)]
 x = []
@@ -31,7 +33,8 @@ for i in range(n):
 # print(left_end, right_end, trace[offset-10:offset+10])
 answer = [0, 0, 0]
 for i in range(left_end, right_end+1):
-    if len(trace[i]) >= 4:
+    cnter = Counter(trace[i])
+    if cnter["W"] >= 2 and cnter["B"] >= 2:
         answer[2] += 1
     else:        
         if trace[i][-1] == "W":
