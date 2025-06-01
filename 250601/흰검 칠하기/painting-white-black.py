@@ -9,7 +9,7 @@ for num, direction in commands:
     dir.append(direction)
 
 # Please write your code here.
-left_end, right_end = 200_000, 0
+left_end, right_end = 100_000, 100_000
 trace = [[] for _ in range(200_001)]
 offset = 100_000
 
@@ -42,5 +42,5 @@ for i in range(left_end, right_end+1):
         elif trace[i][-1] == "B":
             answer[1] += 1
 
-# print(trace[left_end:right_end+1])
+# print(left_end, right_end)
 print(answer[0], answer[1], answer[2])
