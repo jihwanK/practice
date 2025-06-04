@@ -15,27 +15,32 @@ for _ in range(m):
     t2.append(int(time))
 
 # Please write your code here.
-pos_a, pos_b = [0]*1_000_000, [0]*1_000_000
+pos_a, pos_b = [1e7]*1_000_000, [1e7]*1_000_000
 cur = 0
+t_a = 0
 for i in range(n):
-    for t_a in range(t[i]):
+    for _ in range(t[i]):
         if d[i] == "R":
             cur += 1
         else:
             cur -= 1
         pos_a[t_a] = cur
+        t_a += 1
 
 cur = 0
+t_b = 0
 for i in range(m):
-    for t_b in range(t2[i]):
+    for _ in range(t2[i]):
         if d2[i] == "R":
             cur += 1
         else:
             cur -= 1
         pos_b[t_b] = cur
+        t_b += 1
 
 for i in range(1_000_000):
-    if pos_a[i] == pos_b[i]:
-        print(i)
+    if pos_a[i] == pos_b[i] and pos_a[i] != 1e7:
+        print(i+1)
         break
-    
+if i == 1_000_000:
+    print(-1)
