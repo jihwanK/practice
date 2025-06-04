@@ -11,4 +11,5 @@ for i in range(1, n):
     else:
         cnt += 1
 
+max_num = max(max_num, cnt)
 print(max_num)
