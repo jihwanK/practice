@@ -17,4 +17,5 @@ for i in range(1, N):
     else:
         cnt += 1
 
+ans = max(ans, cnt)
 print(ans)
