@@ -12,8 +12,8 @@ offset = 100
 area = [[0]*201 for _ in range(201)]
 
 for i in range(n):
-    for x in range(x1[i], x2[i]):
-        for y in range(y1[i], y2[i]):
+    for x in range(offset+x1[i],offset+x2[i]):
+        for y in range(offset+y1[i], offset+y2[i]):
             area[x][y] = 1
 
 answer = 0
