@@ -41,7 +41,7 @@ for i in range(m):
 answer = -1
 for i in range(1_000_000):
     if pos_a[i] == pos_b[i] and pos_a[i] != 1e7:
-        answer = i
+        answer = i+1
         break
 
 print(answer)
