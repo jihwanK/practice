@@ -38,10 +38,10 @@ for i in range(m):
         pos_b[t_b] = cur
         t_b += 1
 
+answer = -1
 for i in range(1_000_000):
     if pos_a[i] == pos_b[i] and pos_a[i] != 1e7:
-        print(i+1)
+        answer = i
         break
 
-if i == 999_999:
-    print(-1)
+print(answer)
