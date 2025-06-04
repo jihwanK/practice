@@ -26,4 +26,7 @@ for x in range(2_001):
             min_y = min(min_y, y)
             max_y = max(max_y, y)
 
-print((max_x-min_x+1)*(max_y-min_y+1))
+if min_x == 2_002 and max_x == -1 and min_y == 2_002 and max_y == -1:
+    print(0)
+else:
+    print((max_x-min_x+1)*(max_y-min_y+1))
