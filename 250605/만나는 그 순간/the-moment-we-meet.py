@@ -42,5 +42,6 @@ for i in range(1_000_000):
     if pos_a[i] == pos_b[i] and pos_a[i] != 1e7:
         print(i+1)
         break
-if i == 1_000_000:
+
+if i == 999_999:
     print(-1)
