@@ -20,7 +20,6 @@ for _ in range(m):
 position_a = [0]*1_001
 position_b = [0]*1_001
 
-
 time = 0
 for i in range(len(t)):
     for delta_t in range(t[i]):
