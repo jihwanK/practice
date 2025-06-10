@@ -17,19 +17,19 @@ for _ in range(m):
     t2.append(ti)
 
 # Please write your code here.
-position_a = [0]*1_002
-position_b = [0]*1_002
+position_a = [0]*1_000_001
+position_b = [0]*1_000_001
 
 time = 0
 for i in range(len(t)):
-    for delta_t in range(t[i]):
+    for _ in range(t[i]):
         time += 1
         position_a[time] = position_a[time-1] + v[i]
 # print(position_a[:20])
 
 time = 0
 for i in range(len(t2)):
-    for delta_t in range(t2[i]):
+    for _ in range(t2[i]):
         time += 1
         position_b[time] = position_b[time-1] + v2[i]
 # print(position_b[:20])
