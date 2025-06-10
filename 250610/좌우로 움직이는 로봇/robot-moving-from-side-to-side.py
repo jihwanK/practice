@@ -17,8 +17,8 @@ for _ in range(m):
     d_b.append(direction)
 
 # Please write your code here.
-position_a = [1e10]*2_000_000
-position_b = [1e10]*2_000_000
+position_a = [1e10]*1_000_001
+position_b = [1e10]*1_000_001
 position_a[0] = 0
 position_b[0] = 0
 
