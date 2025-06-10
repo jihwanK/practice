@@ -19,7 +19,7 @@ for i in range(M):
 #     if counter[student[i]] >= K:
 #         break
 
-if (i == M-1) and counter[-1] < K:
+if (i == M-1) and counter[-1] > 0:
     print(-1)
 else:
     print(student[i])
