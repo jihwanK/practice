@@ -17,8 +17,8 @@ for _ in range(m):
     t2.append(ti)
 
 # Please write your code here.
-position_a = [0]*1_001
-position_b = [0]*1_001
+position_a = [0]*1_002
+position_b = [0]*1_002
 
 time = 0
 for i in range(len(t)):
