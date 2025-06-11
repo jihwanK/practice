@@ -9,10 +9,13 @@ transmissibility = [K]*(N+1)
 developers[P] = 1 # 최초 감염자
 
 for t, x, y in handshakes:
-    if developers[x] and transmissibility[x] > 0:
+    if developers[x] and developers[y] and transmissibility[x] > 0 and transmissibility[y] > 0:
+        transmissibility[x] -= 1
+        transmissibility[y] -= 1
+    elif developers[x] and transmissibility[x] > 0:
         developers[y] = 1
         transmissibility[x] -= 1
-    elif developers[y] and transmissibility[y] >0:
+    elif developers[y] and transmissibility[y] > 0:
         developers[x] = 1
         transmissibility[y] -= 1
 
