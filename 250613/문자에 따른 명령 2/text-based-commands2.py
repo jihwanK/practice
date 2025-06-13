@@ -8,7 +8,7 @@ cur = [0, 0]
 toward = 0
 for direction in dirs:
     if direction == "L":
-        toward = (toward-1+4)%4
+        toward = (toward-1)%4
     elif direction == "R":
         toward = (toward+1)%4
     elif direction == "F":
