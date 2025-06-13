@@ -37,16 +37,16 @@ for i in range(M):
 
 for a, b in zip(position_a[1:cur], position_b[1:cur]):
     if a > b:
-        if fameofhonour != 1:
+        if fameofhonour != "a":
             answer += 1
-        fameofhonour = 1
+        fameofhonour = "a"
     elif a < b:
-        if fameofhonour != 2:
+        if fameofhonour != "b":
             answer += 1
-        fameofhonour = 2
+        fameofhonour = "b"
     else:
-        if fameofhonour != 3:
+        if fameofhonour != "ab" and a != 0 and b != 0:
             answer += 1
-        fameofhonour = 3
+        fameofhonour = "ab"
 
 print(answer)
