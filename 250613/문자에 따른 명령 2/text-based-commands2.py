@@ -15,4 +15,4 @@ for direction in dirs:
         cur[0] += dx[toward]
         cur[1] += dy[toward]
 
-print(cur[0], cur[1])
+print(cur[0], -cur[1])
