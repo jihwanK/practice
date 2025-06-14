@@ -5,11 +5,15 @@ y = [p[1] for p in points]
 
 # Please write your code here.
 min_dist = 1e10
-prev = points[0]
-for skip_point in points[1:n-1]:
+for i, skip_point in enumerate(points):
+    if i == 0: continue
+    elif i == n-1: break
+    
+    prev = points[0]
     dist = 0
-    for point in points:
-        if point != skip_point:
+    for j, point in enumerate(points):
+        if i == 0: continue
+        elif i != j:
             dist += (abs(point[0]-prev[0]) + abs(point[1]-prev[1]))
             prev = point
     min_dist = min(min_dist, dist)
