@@ -14,7 +14,7 @@ for direction, distance in moves:
         r += dr[direction]
         c += dc[direction]
 
-        if r == 0 and c == 0:
+        if r == 0 and c == 0 and  time != sum(dist):
             print(time)
             break
         time += 1
