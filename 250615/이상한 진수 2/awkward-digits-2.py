@@ -2,8 +2,8 @@ a = input()
 
 # Please write your code here.
 
-if a == 1:
-    print(1)
+if a == '1':
+    print(0)
 else:
     binary = list(a)
     for i in range(len(binary)):
