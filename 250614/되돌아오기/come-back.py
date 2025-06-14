@@ -9,15 +9,19 @@ dr = {"N":-1,"E":0,"W":0,"S":1}
 
 r, c = 0, 0
 time = 1
+stop_flag = False
 for direction, distance in moves:
+    if stop_flag:
+        break
     for _ in range(int(distance)):
         r += dr[direction]
         c += dc[direction]
 
-        if r == 0 and c == 0 and time != sum(dist):
+        if r == 0 and c == 0:
             print(time)
+            stop_flag = True
             break
         time += 1
 
-if time == sum(dist):
+if r != 0 and c != 0:
     print(-1)
