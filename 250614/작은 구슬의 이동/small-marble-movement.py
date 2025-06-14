@@ -4,7 +4,7 @@ r, c = int(r), int(c)
 
 # Please write your code here.
 dx = {"R": 1,"L": -1,"U": 0,"D": 0}
-dy = {"U": 1,"D": -1,"R": 0,"L": 0}
+dy = {"U": -1,"D": 1,"R": 0,"L": 0}
 
 def in_range(x, y):
     return 1 <= x <= n and 1 <= y <= n
