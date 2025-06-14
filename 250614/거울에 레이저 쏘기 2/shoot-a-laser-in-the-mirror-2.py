@@ -30,11 +30,11 @@ while in_range(r, c):
         if direction == "D":
             direction = "L"
         elif direction == "L":
-            direction = "U"
+            direction = "D"
         elif direction == "U":
             direction = "R"
         elif direction == "R":
-            direction = "D"
+            direction = "U"
     elif grid[r][c] == "\\":
         if direction == "D":
             direction = "R"
