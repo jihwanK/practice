@@ -24,7 +24,7 @@ elif 3*n < k <= 4*n:
 
 answer = 0
 while in_range(r, c):
-    print(r, c, grid[r][c])
+    # print(r, c, grid[r][c], direction)
     answer += 1
     if grid[r][c] == "/":
         if direction == "D":
@@ -39,11 +39,11 @@ while in_range(r, c):
         if direction == "D":
             direction = "R"
         elif direction == "R":
-            direction = "U"
+            direction = "D"
         elif direction == "U":
             direction = "L"
         elif direction == "L":
-            direction = "D"
+            direction = "U"
     
     r, c = r+dr[direction], c+dc[direction]
 
