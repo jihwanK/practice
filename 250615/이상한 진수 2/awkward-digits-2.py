@@ -2,14 +2,16 @@ a = input()
 
 # Please write your code here.
 
-if a == '1':
-    print(0)
-else:
-    binary = list(a)
-    for i in range(len(binary)):
-        if binary[i] == '0':
-            binary[i] = '1'
-            break
+changed = False
+binary = list(a)
+for i in range(len(binary)):
+    if binary[i] == '0':
+        binary[i] = '1'
+        changed = True
+        break
 
-    print(int(''.join(binary), 2))
+if not changed:
+    binary[-1] = '0'
+
+print(int(''.join(binary), 2))
 
