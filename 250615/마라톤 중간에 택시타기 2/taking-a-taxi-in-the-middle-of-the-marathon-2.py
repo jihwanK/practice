@@ -6,7 +6,7 @@ y = [p[1] for p in points]
 # Please write your code here.
 min_dist = 1e10
 prev = points[0]
-for skip_point in points[1:n]:
+for skip_point in points[1:n-1]:
     dist = 0
     for point in points:
         if point != skip_point:
