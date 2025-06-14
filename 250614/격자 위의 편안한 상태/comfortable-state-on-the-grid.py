@@ -10,7 +10,8 @@ def in_range(r, c):
 
 grid = [[0]*(m+1) for _ in range(n+1)]
 for (r, c) in points:
-    grid[r][c] = 1
+    if in_range(r, c):
+        grid[r][c] = 1
     
     cnt = 0
     for dr, dc in zip(drs, dcs):
