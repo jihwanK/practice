@@ -10,6 +10,10 @@ def is_adjecent(a, b):
         return True
     elif a == N-1 and b == 1:
         return True
+    elif a == 1 and b == N-1:
+        return True
+    elif a <= 2 and b == N:
+        return True
     return False
 
 answer = 0
