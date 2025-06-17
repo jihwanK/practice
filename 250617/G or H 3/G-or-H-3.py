@@ -12,7 +12,7 @@ for i in range(n):
     line[x[i]] = 1 if c[i] == "G" else 2
 
 answer = 0
-max_pos = max(x)
-for i in range(1, 10001-k+1):
+max_pos = max(max(x), k)
+for i in range(1, max_pos-k+1):
     answer = max(answer, sum(line[i:i+k+1]))
 print(answer)
