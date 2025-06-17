@@ -13,6 +13,6 @@ for i in range(n):
 
 answer = 0
 max_pos = max(max(x), k)
-for i in range(1, max_pos-k+1):
+for i in range(1, max_pos-k+2):
     answer = max(answer, sum(line[i:i+k+1]))
 print(answer)
