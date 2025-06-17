@@ -1,11 +1,11 @@
 N, K = map(int, input().split())
 # candy = []
 pos = []
-candy = [0]*101
+candy = [0]*202
 for _ in range(N):
     c, p = map(int, input().split())
     # candy.append(c)
-    candy[p] = c
+    candy[p] += c
     pos.append(p)
 
 # Please write your code here.
