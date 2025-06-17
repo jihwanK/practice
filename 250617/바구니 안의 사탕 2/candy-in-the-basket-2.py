@@ -10,6 +10,9 @@ for _ in range(N):
 
 # Please write your code here.
 answer = 0
-for c in range(K, max(pos)-K):
-    answer = max(answer, sum(candy[c-K:c+K+1]))
-print(answer)
+if K <= 100:
+    for c in range(K, 101):
+        answer = max(answer, sum(candy[c-K:c+K+1]))
+    print(answer)
+else:
+    print(sum(candy))
