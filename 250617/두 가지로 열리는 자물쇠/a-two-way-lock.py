@@ -6,18 +6,11 @@ a2, b2, c2 = map(int, input().split())
 def is_adjecent(a, b):
     if abs(a-b) <= 2:
         return True
-    if a == N:
-        if abs(a%N - b) <= 2:
-            return True
-        else:
-            return False
-    elif a == N-1:
-        if b == N or b == 1:
-            return True
-        else:
-            return False
+    if a == N and b <= 2:
+        return True
+    elif a == N-1 and b == 1:
+        return True
     return False
-    
 
 answer = 0
 for i in range(1, N+1):
