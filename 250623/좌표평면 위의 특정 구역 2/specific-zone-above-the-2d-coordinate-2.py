@@ -4,8 +4,8 @@ x = [p[0] for p in points]
 y = [p[1] for p in points]
 
 # Please write your code here.
-answer = 1e10
-1for i in range(n):
+answer = 1e11
+for i in range(n):
     new_x = x[:i]+x[i+1:]
     new_y = y[:i]+y[i+1:]
 
