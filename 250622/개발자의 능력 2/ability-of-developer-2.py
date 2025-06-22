@@ -9,15 +9,10 @@ for a in range(6):
             if c == a or c == b: continue
             for d in range(6):
                 if d == a or d == b or d == c: continue
-                for e in range(6):
-                    if e == a or e == b or e == c or e == d: continue
-                    for f in range(6):
-                        if f == a or f == b or f == c or f == d or f == e: continue
-                        groups = [
-                            sum([ability[a], ability[b]]),
-                            sum([ability[c], ability[d]]),
-                            sum([ability[e], ability[f]]),
-                        ]
-                        answer = min(answer, abs(max(groups)-min(groups)))
+                group1 = sum([ability[a], ability[b]])
+                group2 = sum([ability[c], ability[d]])
+                group3 = sum(ability) - group1 - group2
+                groups = [group1, group2, group3]
+                answer = min(answer, abs(max(groups)-min(groups)))
 
 print(answer)
