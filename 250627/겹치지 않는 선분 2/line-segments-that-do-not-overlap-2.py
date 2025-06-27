@@ -3,14 +3,22 @@ lines = [tuple(map(int, input().split())) for _ in range(n)]
 
 # Please write your code here.
 def is_intersect(line1, line2):
-    return (line1[0] < line1[1] and line1[0] < line2[0] < line1[1] and line1[0] < line2[1] < line1[1]) \
-        or (line2[0] < line2[1] and line2[0] < line1[0] < line2[1] and line2[0] < line1[1] < line2[1]) \
-        or (line1[0] > line1[1] and line1[1] < line2[0] < line1[0] and line1[1] < line2[1] < line1[0]) \
-        or (line1[0] > line1[1] and line2[0] < line1[0] < line2[1] and line2[0] < line1[1] < line2[1]) \
-        or (line2[0] > line2[1] and line2[1] < line1[0] < line2[0] and line2[1] < line1[1] < line2[0]) \
-        or (line2[0] > line2[1] and line1[0] < line2[0] < line1[1] and line1[0] < line2[1] < line1[1]) \
-        or (line1[0] < line1[1] and line2[0] > line2[1] and line1[1] > line2[1] and line2[0] > line1[1]) \
-        or (line1[0] > line1[1] and line2[0] < line2[1] and line2[1] > line1[1] and line1[0] > line2[1])
+    if line1[0] < line1[1]:
+        if line2[0] < line2[1]:
+            return line2[0] < line1[0] < line1[1] < line2[1] \
+                or line1[0] < line2[0] < line2[1] < line1[1]
+        elif line2[0] > line2[1]:
+            return line1[0] < line2[1] < line1[1] < line2[0] \
+                or line2[1] < line1[0] < line1[1] < line2[0] \
+                or line1[0] < line2[0] < line2[1] < line1[1]
+    elif line1[0] > line1[1]:
+        if line2[0] < line2[1]:
+            return line2[0] < line1[1] < line1[0] < line2[1] \
+                or line2[0] < line1[0] < line1[1] < line2[1] \
+                or line1[1] < line2[0] < line2[1] < line1[0]
+        elif line2[0] > line2[1]:
+            return line2[1] < line1[1] < line1[0] < line2[0] \
+                or line1[1] < line2[1] < line2[0] < line1[0]
 
 answer = 0
 intersect = False
