@@ -13,7 +13,7 @@ def is_intersect(line1, line2):
                 or line1[0] < line2[0] < line2[1] < line1[1]
     elif line1[0] > line1[1]:
         if line2[0] < line2[1]:
-            return line2[0] < line1[1] < line1[0] < line2[1] \
+            return line2[0] < line1[1] < line2[1] < line1[0] \
                 or line2[0] < line1[0] < line1[1] < line2[1] \
                 or line1[1] < line2[0] < line2[1] < line1[0]
         elif line2[0] > line2[1]:
