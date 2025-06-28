@@ -21,10 +21,9 @@ for i, j, k in candidates:
         for n2 in range(n1+1, n):
             if flag: break
             if n1 != i and n1 != j and n1 != k and n2 != i and n2 != j and n2 != k:
-                if l[n1] <= l[n2] <= r[n1] <= r[n2] or l[n2] <= l[n1] <= r[n2] <= r[n1]:
+                if l[n1] <= l[n2] <= r[n1] or l[n2] <= l[n1] <= r[n2]:
                     flag = True
     if not flag:
-        # print(i,j,k)
         answer += 1
     else: flag = False
 print(answer)
