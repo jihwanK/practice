@@ -2,7 +2,7 @@ N, K = map(int, input().split())
 num = [int(input()) for _ in range(N)]
 
 # Please write your code here.
-answer = 0
+answer = -1
 for bomb_num in range(1, N+1):
     for i in range(N):
         for j in range(N):
