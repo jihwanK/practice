@@ -10,4 +10,4 @@ for i in range(k):
         for k in range(j+1, n):
             counter[(arr[i][j], arr[i][k])] += 1
 
-print(len(list(filter(lambda v: v == 3, counter.values()))))
+print(len(list(filter(lambda v: v == k, counter.values()))))
