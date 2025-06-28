@@ -8,11 +8,16 @@ for new in range(N):
     if seat[new] == '1': continue
     seat[new] = '1'
 
+    # print(seat)
     i = 0
     j = 1
     while i < N:
         if j >= N: break
-        if seat[i] == '0': continue
+        # print(min_dist, i, j, new, seat[i], seat[j], seat[new])
+        if seat[i] == '0': 
+            i += 1
+            j = i + 1
+            continue
         if seat[j] == '0':
             j += 1
         else:
