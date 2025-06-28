@@ -5,7 +5,7 @@ num = [int(input()) for _ in range(N)]
 answer = -1
 for bomb_num in range(1001):
     for i in range(N):
-        for j in range(N):
+        for j in range(i+1, N):
             if i == j or num[i] != bomb_num: continue
             if num[i] == num[j] and j-i <= K:
                 answer = max(answer, bomb_num)
