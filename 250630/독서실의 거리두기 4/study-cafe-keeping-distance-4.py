@@ -7,12 +7,13 @@ def min_dist(seat):
     start, end = 0, 1
     while start < end and end < N:
         if seat[start] == '1':
-            if seat[end] == '0':
-                end += 1
-            else:
+            if seat[end] == '1':
                 dist = min(dist, end-start)
                 start = end
-                end += 1
+            end += 1
+        else:
+            start += 1
+            end = start + 1
     return dist
 
 answer = 0
