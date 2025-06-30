@@ -3,7 +3,7 @@ arr = list(map(int, input().split()))
 
 # Please write your code here.
 i = 0
-answer = 0
+answer = arr[0]
 while i < n:
     possible_i = i
     possible_v = 1e10
