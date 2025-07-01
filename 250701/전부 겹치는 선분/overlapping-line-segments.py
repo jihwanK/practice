@@ -5,15 +5,13 @@ x1, x2 = list(x1), list(x2)
 
 # Please write your code here.
 segments.sort(key=lambda x: (x[0], x[1]))
+visited = [0]*101
 
-overlapped = False
-prev = segments[0]
-for cur in segments[1:]:
-    if prev[1] >= cur[0]:
-        overlapped = True
-        break
+for line in segments:
+    for x in range(line[0], line[1]+1):
+        visited[x] += 1
 
-if overlapped:
+if sum(filter(lambda x: x == n, visited)) == n:
     print("Yes")
 else:
     print("No")
