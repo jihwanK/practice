@@ -6,5 +6,8 @@ u = [int(msg[1]) for msg in messages]
 # Please write your code here.
 all_members = set([chr(i) for i in range(ord('A'), ord('A')+n)])
 read_msg = set(c[p-1:])
-print(*list(all_members - read_msg))
+if u[p-1] == 0:
+    print()
+else:
+    print(*sorted(list(all_members - read_msg)))
 
