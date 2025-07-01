@@ -11,7 +11,7 @@ for line in segments:
     for x in range(line[0], line[1]+1):
         visited[x] += 1
 
-if sum(filter(lambda x: x == n, visited)) == n:
+if any(filter(lambda x: x == n, visited)):
     print("Yes")
 else:
     print("No")
