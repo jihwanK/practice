@@ -26,7 +26,7 @@ def recur(cur_r, cur_c):
         new_r += dr[move_dir[cur_r][cur_c]]
         new_c += dc[move_dir[cur_r][cur_c]]
 
-        print((new_r, new_c), num[cur_r][cur_c])
+        # print((new_r, new_c), num[cur_r][cur_c])
         # print(trace)
 
         if can_move(new_r, new_c) and num[cur_r][cur_c] < num[new_r][new_c]:
