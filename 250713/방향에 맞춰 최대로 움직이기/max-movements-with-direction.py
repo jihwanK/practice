@@ -11,15 +11,10 @@ answer = 0
 trace = []
 
 def can_move(r, c):
-    # return 1 <= r <= n and 1 <= c <= n
     return 0 <= r < n and 0 <= c < n
 
 def recur(cur_r, cur_c):
     global answer
-
-    # if not can_move(cur_r, cur_c):
-    #     answer = max(answer, len(trace))
-    #     return
     
     new_r, new_c = cur_r, cur_c
     for i in range(n):
