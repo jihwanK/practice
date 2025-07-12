@@ -17,17 +17,14 @@ def can_move(r, c):
 def recur(cur_r, cur_c):
     global answer
 
-    if not can_move(cur_r, cur_c):
-        answer = max(answer, len(trace))
-        return
+    # if not can_move(cur_r, cur_c):
+    #     answer = max(answer, len(trace))
+    #     return
     
     new_r, new_c = cur_r, cur_c
     for i in range(n):
         new_r += dr[move_dir[cur_r][cur_c]]
         new_c += dc[move_dir[cur_r][cur_c]]
-
-        # print((new_r, new_c), num[cur_r][cur_c])
-        # print(trace)
 
         if can_move(new_r, new_c) and num[cur_r][cur_c] < num[new_r][new_c]:
             trace.append((new_r, new_c))
