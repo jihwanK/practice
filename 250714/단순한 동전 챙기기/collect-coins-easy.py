@@ -20,7 +20,8 @@ trace = []
 def recur(cnt):
     global answer
 
-    if cnt >= 3:
+    if cnt == 3:
+        # print(trace)
         subans = abs(start[0]-coins[trace[0]][0]) + abs(start[1]-coins[trace[0]][1])
         for prev, cur in zip(trace, trace[1:]):
             subans += abs(coins[prev][0]-coins[cur][0]) + abs(coins[prev][1]-coins[cur][1])
