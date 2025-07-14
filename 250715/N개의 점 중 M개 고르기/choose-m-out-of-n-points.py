@@ -11,12 +11,12 @@ def recur(cnt):
     global answer
 
     if cnt == m:
-        answer = min(answer, max([dist(selected[i1], selected[i2]) for i1 in range(m) for i2 in range(i1+1, m)]))
+        answer = min(answer, max([dist(points[selected[i1]], points[selected[i2]]) for i1 in range(m) for i2 in range(i1+1, m)]))
         return
 
-    for point in points:
-        if point not in selected:
-            selected.append(point)
+    for p in range(len(points)):
+        if p not in selected and (len(selected) == 0 or selected[-1] < p):
+            selected.append(p)
             recur(cnt+1)
             selected.pop()
 
