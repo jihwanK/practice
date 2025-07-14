@@ -13,7 +13,7 @@ def recur(cnt):
         return
 
     for i in range(cnt, len(num)):
-        if i not in candidate_a:
+        if i not in candidate_a and (len(candidate_a) == 0 or i > candidate_a[-1]):
             candidate_a.append(i)
             recur(cnt+1)
             candidate_a.pop()
