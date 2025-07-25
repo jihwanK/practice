@@ -19,21 +19,18 @@ def can_colour(row, col):
             return False
     return True
 
-# def recur(row, col):
 def recur(row):
     global answer
 
-    if visited[-1] != -1:
+    if row >= n:
         answer = max(answer, sum([grid[r][c] for r, c in enumerate(visited)]))
         return
     
     for n_col in range(n):
-        n_row = row + 1
+        if can_colour(row, n_col):
+            visited[row] = n_col
+            recur(row+1)
+            visited[row] = -1
 
-        if 0 <= n_row < n and can_colour(n_row, n_col):
-            visited[n_row] = n_col
-            recur(n_row)
-            visited[n_row] = -1
-
-recur(-1)
+recur(0)
 print(answer)
