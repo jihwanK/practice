@@ -31,7 +31,7 @@ for k in range(highest, 0, -1):
             if can_go(r, c, k):
                 dfs(r, c)
                 subanswer += 1
-    if answer_vlg < subanswer:
+    if answer_vlg <= subanswer:
         answer_vlg = subanswer
         answer_k = k
 
