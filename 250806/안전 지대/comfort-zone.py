@@ -26,6 +26,8 @@ answer_vlg = 0
 answer_k = 0
 for k in range(highest, 0, -1):
     subanswer = 0
+    visited = [[0]*m for _ in range(n)]
+    
     for r in range(n):
         for c in range(m):
             if can_go(r, c, k):
